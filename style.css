@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #606060;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+}
+
+.container-form {
+    color: white;
+    background-color: #202020;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    padding: 40px 20px 60px 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.container-form::before {
+    content: '';
+    position: absolute;
+    width: calc(100% - 15px);
+    height: calc(100% - 15px);
+    border-radius: 10px;
+    background-color: #202020;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container-form::after {
+    content: '';
+    position: absolute;
+    background-image: conic-gradient(#d33535 45deg, transparent 100deg);
+    background-repeat: no-repeat;
+    width: 150%;
+    height: 150%;
+    border-radius: 10px;
+
+    top: -100px;
+    left: -100px;
+    z-index: -1;
+    
+
+    animation: backanimated 5s linear infinite;
+}
+
+@keyframes backanimated {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.container-form h1 {
+    position: relative;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+}
+
+label {
+    font-size: 1.8em;
+    font-weight: lighter;
+    letter-spacing: 0.05em;
+
+    display: block;
+}
+
+input {
+    color: white;
+    background-color: transparent;
+    font-size: 1em;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-bottom: 30px;
+    outline: none;
+    display: block;
+    transition: background-color 1s;
+}
+
+input::placeholder {
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 0.01em;
+}
+
+input:focus {
+    background-color:rgba(0, 0, 0, 0.295);
+}
+
+.container-login, .container-senha {
+    position: relative;
+}
+
+span {
+    position: absolute;
+    background-color: white;
+    height: 3px;
+    width: 100%;
+
+    bottom: 0;
+    background-image: linear-gradient(90deg, #d33535, #202020);
+    background-size: 0% 100%;
+}
+
+input:focus ~ span {
+    animation: animate 2s ease-out;
+}
+
+@keyframes animate {
+    to {
+        background-size: 100% 100%;
+    }
+}
+
+button {
+    color: white;
+    background-color: transparent;
+    font-weight: bold;
+    position: absolute;
+    width: 40%;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #202020;
+    background-color: white;
+    border: none;
+}
+
+.reset-btn {
+    right: 15px;
+}
